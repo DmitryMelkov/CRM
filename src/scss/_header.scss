@@ -1,0 +1,66 @@
+@import "_variables";
+@import "_mixins";
+
+.header {
+  /*закрепленная шапка*/
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 11;
+  transform: translate3d(0, 0, 0); /*чтобы менюшка не дергалась при скроле*/
+
+
+  &-container {
+    display: flex;
+    padding: 20px 20px;
+    background-color: $colorWhite;
+    // box-shadow: 0 0 5px 2px #333;
+    box-shadow: 0 6px 4px -4px rgba(0, 0, 0, .2);
+  }
+  &__input {
+    padding-left: 16px;
+    width: 100%;
+    max-width: 581px;
+    height: 44px;
+    color: $colorBlack;
+    border: 1px solid $colorGreyText;
+  }
+  &__label {
+    width: 100%;
+  }
+  &__input::placeholder {
+    font-family: "Open Sans", serif;
+  }
+}
+
+.logo {
+  margin-right: 53px;
+
+  &__svg {
+    width: 50px;
+    height: 50px;
+    color: $colorFirm;
+  }
+}
+
+//hover
+@media (min-width: 1024px) {
+  .header {
+    &__input:hover {
+      border: 1px solid $colorFirm;
+    }
+  }
+}
+
+//active, focus-visible
+
+.header {
+  &__input:active {
+    border: 1px solid $colorFirm;
+  }
+  &__input:focus-visible {
+    border: 1px solid $colorFirm;
+    outline: none;
+  }
+}
