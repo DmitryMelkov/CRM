@@ -9,10 +9,12 @@
     padding-right: 90px;
   }
   &__title {
+
     padding-top: 40px;
   }
   &__table {
     margin-bottom: 40px;
+    width: 100%;
   }
   &__table-title {
     margin-top: 40px;
@@ -24,23 +26,62 @@
     font-weight: 700;
   }
   &__table-th {
+    padding-left: 20px;
+    padding-bottom: 8px;
+    text-align: start;
     font-size: 12px;
     line-height: 16px;
     color: $colorGreyText;
     font-weight: 400;
-    border: 1px solid $colorFirm;
+    cursor: pointer;
+  }
+  &__table-th:first-child {
+    color: $colorFirm
   }
   &__table-td {
-    border: 1px solid $colorFirm;
+    padding: 20px;
+    font-size: 14px;
+    color: $colorBlack;
+  }
+  &__table-td-id,
+  &__table-td-time {
+    color: $colorGreyText;
+  }
+  &__table-icon-svg {
+    width: 16px;
+    height: 16px;
+    color: $colorFirm;
+    transition: all .3s ease-in-out;
+  }
+  &__tbody {
+    background-color: $colorWhite;
+    height: 60px;
+  }
+  &__table-svg {
+    width: 12px;
+    height: 12px;
+    color: $colorFirm;
+  }
+  &__table-edit-svg {
+    width: 16px;
+    height: 16px;
+    color: $colorFirm;
+  }
+  &__table-cancel-svg {
+    width: 16px;
+    height: 16px;
+    color: $colorRed;
   }
   &__add {
     text-align: center;
     padding-bottom: 50px;
   }
   &__add-btn {
+    padding: 14px 26px;
     line-height: 19px;
     font-weight: 600;
     color: $colorFirm;
+    border: 1px solid $colorFirm;
     transition: all 0.3s ease-in-out;
   }
   &__add-btn-svg {
@@ -68,7 +109,6 @@
     margin: 20% auto;
     padding: 24px 30px;
     width: 450px;
-    height: 450px;
   }
 
   &__close {
@@ -146,6 +186,15 @@
     color: $colorFirm;
     transition: all .3s ease-in-out;
   }
+  &__save {
+    margin-top: 25px;
+    padding: 12px 35px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $colorWhite;
+    background-color: $colorFirm;
+    transition: all .3s ease-in-out;
+  }
 }
 
 .modal-select {
@@ -221,8 +270,12 @@
   .clients {
     &__add-btn:hover {
       color: $colorFirmHover;
+      border: 1px solid $colorFirmHover;
     }
     &__add-btn:hover &__add-btn-svg {
+      color: $colorFirmHover;
+    }
+    &__table-btn:hover &__table-icon-svg {
       color: $colorFirmHover;
     }
   }
@@ -245,6 +298,9 @@
     &__add-btn:hover &__add-btn-contact {
       color: $colorFirmHover;
     }
+    &__save:hover {
+      background-color: $colorFirmHover;
+    }
   }
   .modal-select {
     &__header:hover {
@@ -257,6 +313,7 @@
 .clients {
   &__add-btn:active {
     color: $colorFirmActive;
+    border: 1px solid $colorFirmActive;
   }
   &__add-btn:active &__add-btn-svg {
     color: $colorFirmActive;
@@ -264,6 +321,7 @@
   &__add-btn:focus-visible {
     color: $colorFirmActive;
     outline: 0;
+    border: 1px solid $colorFirmActive;
   }
   &__add-btn:focus-visible &__add-btn-svg {
     color: $colorFirmActive;
@@ -306,6 +364,13 @@
     color: $colorWhite;
     background-color: $colorFirmActive;
     border-radius: 50%;
+  }
+  &__save:active {
+    background-color: $colorFirmActive;
+  }
+  &__save:focus-visible {
+    background-color: $colorFirmActive;
+    outline: none;
   }
 }
 

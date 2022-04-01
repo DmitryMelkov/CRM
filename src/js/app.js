@@ -1,11 +1,12 @@
 import * as flsFunctions from "./modules/functionsWebP.js";
-import { modal_window } from "./modal_window.js";
-import { selectCustom } from "./selectCustom.js";
-import { createContacts } from "./createContacts.js";
+import { modal_window } from "./modules/modal_window.js";
+import { selectCustom } from "./modules/selectCustom.js";
+import { addContactsModal } from "./addContactsModal.js";
+import { addContacts } from "./addContacts.js";
+
 
 flsFunctions.isWeb();
-createContacts();
 modal_window();
-selectCustom();
-
-
+// selectCustom();
+addContactsModal();
+addContacts();

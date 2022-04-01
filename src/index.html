@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   @@include('html/head.html',{ "title": "Главная" })
   <body>
     @@include('html/header.html',{ })
@@ -13,26 +13,63 @@
             </caption>
             <thead>
               <tr class="clients__table-tr">
-                <th class="clients__table-th" id="number">ID</th>
-                <th class="clients__table-th" id="fioSort">Фамилия Имя Отчество</th>
-                <th class="clients__table-th" id="date-time-create" colspan="2">Дата и время Создания</th>
-                <th class="clients__table-th" id="last-changes" colspan="2">Последние изменения</th>
+                <th class="clients__table-th" id="number">
+                  ID
+                  <svg class="clients__table-svg">
+                    <use xlink:href="img/icons/icons.svg#arrow-id"></use>
+                  </svg>
+                </th>
+                <th class="clients__table-th" id="fioSort">Фамилия Имя Отчество
+                  <svg class="clients__table-svg">
+                    <use xlink:href="img/icons/icons.svg#arrow-id"></use>
+                  </svg>
+                </th>
+                <th class="clients__table-th" id="date-time-create" colspan="2">Дата и время Создания
+                  <svg class="clients__table-svg">
+                    <use xlink:href="img/icons/icons.svg#arrow-id"></use>
+                  </svg>
+                </th>
+                <th class="clients__table-th" id="last-changes" colspan="2">Последние изменения
+                  <svg class="clients__table-svg">
+                    <use xlink:href="img/icons/icons.svg#arrow-id"></use>
+                  </svg>
+                </th>
                 <th class="clients__table-th" id="Contacts">Контакты</th>
                 <th class="clients__table-th" id="actions" colspan="2">Действия</th>
               </tr>
             </thead>
-            <tbody id="listStudents">
-              <tr class="clients__table-tr">
-                <td class="clients__table-td">123455</td>
+            <tbody class="clients__tbody" id="listClients">
+              <!-- <tr class="clients__table-tr">
+                <td class="clients__table-td clients__table-td-id">123455</td>
                 <td class="clients__table-td">Скворцов Денис Юрьевич</td>
                 <td class="clients__table-td">21.02.2021</td>
-                <td class="clients__table-td">12:41</td>
+                <td class="clients__table-td clients__table-td-time">12:41</td>
                 <td class="clients__table-td">21.02.2021</td>
-                <td class="clients__table-td">14:50</td>
-                <td class="clients__table-td">vk, facebook</td>
-                <td class="clients__table-td">Изменить</td>
-                <td class="clients__table-td">Удалить</td>
-              </tr>
+                <td class="clients__table-td clients__table-td-time">14:50</td>
+                <td class="clients__table-td">
+                  <button class="clients__table-btn btn-reset">
+                    <svg class="clients__table-icon-svg">
+                      <use xlink:href="img/icons/icons.svg#vk"></use>
+                    </svg>
+                  </button>
+                </td>
+                <td class="clients__table-td">
+                  <button class="clients__table-btn btn-reset">
+                    <svg class="clients__table-edit-svg">
+                      <use xlink:href="img/icons/icons.svg#edit"></use>
+                    </svg>
+                    <span>Изменить</span>
+                  </button>
+                </td>
+                <td class="clients__table-td">
+                  <button class="clients__table-btn btn-reset">
+                    <svg class="clients__table-cancel-svg">
+                      <use xlink:href="img/icons/icons.svg#cancel"></use>
+                    </svg>
+                    <span>Удалить</span>
+                  </button>
+                </td>
+              </tr> -->
             </tbody>
           </table>
           <div class="clients__add">
@@ -79,7 +116,7 @@
                 </form>
                 <form class="modal__add-contact" action="/">
                   <ul class="modal__add-contact-list">
-                    <li class="modal__add-contact-item">
+                    <!-- <li class="modal__add-contact-item">
                       <div class="modal-select select">
                         <button class="modal-select__header select__header btn-reset">
                           <span class="modal-select__current select__current">Телефон</span>
@@ -88,6 +125,7 @@
                           </svg>
                         </button>
                         <div class="modal-select__body">
+                          <div class="modal-select__item select__item">Телефон</div>
                           <div class="modal-select__item select__item">Доп. телефон</div>
                           <div class="modal-select__item select__item">Email</div>
                           <div class="modal-select__item select__item">Vk</div>
@@ -107,7 +145,7 @@
                           <use xlink:href="img/icons/icons.svg#close"></use>
                         </svg>
                       </button>
-                    </li>
+                    </li> -->
                   </ul>
                   <button class="modal__add-btn btn-reset">
                     <svg class="modal__add-btn-contact">
@@ -116,6 +154,7 @@
                     Добавить контакт
                   </button>
                 </form>
+                <button class="modal__save btn-reset">Сохранить</button>
               </div>
             </div>
           </div>
