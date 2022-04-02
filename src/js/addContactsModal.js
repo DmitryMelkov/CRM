@@ -3,6 +3,7 @@ import { createEl } from "./modules/createEl.js";
 
 
 export function addContactsModal() {
+
   let svgSpriteChoice = () => {
     return `
     <span class="modal-select__current select__current">Телефон</span>
@@ -75,6 +76,8 @@ export function addContactsModal() {
 
   const addContact = document.querySelector(".modal__add-btn");
   addContact.addEventListener("click", createElBtn);
+
+
 }
 
 // selectItem.forEach((item) => {

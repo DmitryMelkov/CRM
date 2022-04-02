@@ -38,7 +38,6 @@
     "gulp-webp-html-nosvg": "^1.0.6",
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
-    "inputmask": "^5.0.7",
     "just-validate": "^3.5.1",
     "sass": "^1.49.9",
     "swiper": "^8.0.7",

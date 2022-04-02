@@ -203,13 +203,7 @@
   justify-content: center;
   width: 100%;
   max-width: 123px;
-  .is-active &__body {
-    display: block;
-  }
-  .is-active &__icon-svg {
-    transform: rotate(180deg);
-    transition: all 0.3s ease-in-out;
-  }
+
   &__header {
     padding-left: 12px;
     padding-right: 12px;
@@ -255,8 +249,23 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
   }
-  &__item:hover {
-    background-color: $colorBackgroundGrey;
+
+
+  // .is-active &__body {
+  //   display: block;
+  // }
+  // .is-active &__icon-svg {
+  //   transform: rotate(180deg);
+  //   transition: all 0.3s ease-in-out;
+  // }
+
+  //новыфй селект
+  &__body.is-active {
+    display: block;
+  }
+  &__body.is-active &__icon-svg {
+    transform: rotate(180deg);
+    transition: all 0.3s ease-in-out;
   }
 }
 
@@ -305,6 +314,9 @@
   .modal-select {
     &__header:hover {
       border: 1px solid $colorFirmHover;
+    }
+    &__item:hover {
+      background-color: $colorBackgroundGrey;
     }
   }
 }
@@ -379,7 +391,20 @@
     border: 1px solid $colorFirmActive;
   }
 
+  &__header:focus {
+    border: 1px solid $colorFirmActive;
+    outline: none;
+  }
+
   &__header:focus-visible {
     border: 1px solid $colorFirmActive;
+    outline: none;
   }
+  &__item:active {
+    background-color: $colorBackgroundGrey;
+  }
+  &__item:focus-visible {
+    background-color: $colorBackgroundGrey;
+  }
+
 }

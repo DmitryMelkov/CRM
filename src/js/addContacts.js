@@ -14,21 +14,21 @@ export function addContacts() {
   };
 
   let clientsArr = [
+    // {
+    //   id: 3,
+    //   fio: "Ivanov Vasily Petrovich",
+    //   firstName: "Vasily",
+    //   middleName: "Petrovich",
+    //   lastName: "Ivanov",
+    //   dateCreation: new Date().toLocaleString("ru", optionsDate),
+    //   timeCreation: new Date().toLocaleString("ru", optionsTime),
+    //   dateChange: new Date().toLocaleString("ru", optionsDate),
+    //   timeChange: new Date().toLocaleString("ru", optionsTime),
+    //   clientChange: "Изменить",
+    //   clientdel: "Удалить",
+    // },
     {
-      id: 3,
-      fio: "Ivanov Vasily Petrovich",
-      firstName: "Vasily",
-      middleName: "Petrovich",
-      lastName: "Ivanov",
-      dateCreation: new Date().toLocaleString("ru", optionsDate),
-      timeCreation: new Date().toLocaleString("ru", optionsTime),
-      dateChange: new Date().toLocaleString("ru", optionsDate),
-      timeChange: new Date().toLocaleString("ru", optionsTime),
-      clientChange: "Изменить",
-      clientdel: "Удалить",
-    },
-    {
-      id: 1,
+      idNumber: 1,
       fio: "Ivanov Dmitry Alexandrovich",
       firstName: "Dmitry",
       middleName: "Alexandrovich",
@@ -44,9 +44,11 @@ export function addContacts() {
 
   //validation
   //валидация
-  let firstName = document.querySelector("#modal-name");
+
+  let firstName = document.getElementById("modal-name");
   let lastName = document.querySelector("#modal-surname");
   let middleName = document.querySelector("#modal-middlename");
+  console.log(firstName);
 
   new JustValidate(".modal__form", {
     rules: {
@@ -81,27 +83,27 @@ export function addContacts() {
     colorWrong: "red",
 
     submitHandler: function () {
-      let firstNameValue = firstName.value;
-      let lastNameValue = lastName.value;
-      let middleNameValue = middleName.value;
+      console.log("submitHandler");
+
+      let idNumber = 1;
+      let fioValue = firstName.value + middleName.value + lastName.value;
 
       clientsArr.push({
-        firstName: firstNameValue,
-        lastName: lastNameValue,
-        middleName: middleNameValue,
+        idNumber: idNumber,
+        fio: fioValue,
       });
       render();
     },
   });
 
   // создание tr
-  let createClientTr = (client) => {
+  function createClientTr(client) {
     let elRowTr = createEl("tr", "clients__table-tr");
     tbody.append(elRowTr);
 
     //id
     let elRowTdId = createEl("td", "clients__table-td, clients__table-td-id");
-    elRowTdId.textContent = client.id + 1;
+    elRowTdId.textContent = client.idNumber;
     elRowTr.append(elRowTdId);
 
     //fio
@@ -182,31 +184,16 @@ export function addContacts() {
     });
 
     return elRowTr;
-  };
+    console.log("sort");
+  }
 
   let tbody = document.querySelector(".clients__tbody");
-  let columnSort = "number";
+  let columnSort = "idNumber";
   let dirSort = false;
-
-  //передача клиентов
-  let render = () => {
-    let copyclientsArr = [...clientsArr];
-    copyclientsArr = sortClients(copyclientsArr, columnSort, dirSort);
-
-    tbody.innerHTML = "";
-
-    for (let client of copyclientsArr) {
-      let newTr = createClientTr(client);
-
-      tbody.append(newTr);
-    }
-  };
-
-  // render()
 
   // сортировка
   document.querySelector("#number").addEventListener("click", function () {
-    columnSort = "number";
+    columnSort = "idNumber";
     dirSort = !dirSort;
     render();
   });
@@ -217,17 +204,17 @@ export function addContacts() {
     render();
   });
 
-  // document.querySelector("#date-time-create").addEventListener("click", function () {
-  //   columnSort = "date-time-create";
-  //   dirSort = !dirSort;
-  //   render();
-  // });
+  document.querySelector("#date-time-create").addEventListener("click", function () {
+    columnSort = "date-time-create";
+    dirSort = !dirSort;
+    render();
+  });
 
-  // document.querySelector("#last-changes").addEventListener("click", function () {
-  //   columnSort = "last-changes";
-  //   dirSort = !dirSort;
-  //   render();
-  // });
+  document.querySelector("#last-changes").addEventListener("click", function () {
+    columnSort = "last-changes";
+    dirSort = !dirSort;
+    render();
+  });
 
   let sortClients = (clientsArr, column, dir = true) => {
     let result = clientsArr.sort(function (a, b) {
@@ -241,6 +228,24 @@ export function addContacts() {
 
     return result;
   };
+
+  //передача клиентов
+  let render = () => {
+    let copyclientsArr = [...clientsArr];
+    console.log(copyclientsArr);
+    copyclientsArr = sortClients(copyclientsArr, columnSort, dirSort);
+
+    tbody.innerHTML = "";
+
+    for (let client of copyclientsArr) {
+      let newTr = createClientTr(client);
+
+      tbody.append(newTr);
+      console.log("rener");
+    }
+  };
+
+  // render();
 
   const btnSave = document.querySelector(".modal__save");
   btnSave.addEventListener("click", render);

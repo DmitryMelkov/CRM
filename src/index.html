@@ -19,17 +19,20 @@
                     <use xlink:href="img/icons/icons.svg#arrow-id"></use>
                   </svg>
                 </th>
-                <th class="clients__table-th" id="fioSort">Фамилия Имя Отчество
+                <th class="clients__table-th" id="fioSort">
+                  Фамилия Имя Отчество
                   <svg class="clients__table-svg">
                     <use xlink:href="img/icons/icons.svg#arrow-id"></use>
                   </svg>
                 </th>
-                <th class="clients__table-th" id="date-time-create" colspan="2">Дата и время Создания
+                <th class="clients__table-th" id="date-time-create" colspan="2">
+                  Дата и время Создания
                   <svg class="clients__table-svg">
                     <use xlink:href="img/icons/icons.svg#arrow-id"></use>
                   </svg>
                 </th>
-                <th class="clients__table-th" id="last-changes" colspan="2">Последние изменения
+                <th class="clients__table-th" id="last-changes" colspan="2">
+                  Последние изменения
                   <svg class="clients__table-svg">
                     <use xlink:href="img/icons/icons.svg#arrow-id"></use>
                   </svg>
@@ -93,12 +96,22 @@
                           id="modal-surname"
                           name="Фамилия"
                           placeholder="Фамилия*"
+                          value="mel"
+                          data-validate-field="lastName"
                         />
                       </label>
                     </li>
                     <li class="modal__form-item">
                       <label class="modal__form-label">
-                        <input class="modal__form-input" type="text" id="modal-name" name="Имя" placeholder="Имя*" />
+                        <input
+                          class="modal__form-input"
+                          type="text"
+                          id="modal-name"
+                          name="Имя"
+                          placeholder="Имя*"
+                          value="dm"
+                          data-validate-field="firstName"
+                        />
                       </label>
                     </li>
                     <li class="modal__form-item">
@@ -109,10 +122,13 @@
                           id="modal-middlename"
                           name="Отчество"
                           placeholder="Отчество"
+                          value="al"
+                          data-validate-field="middleName"
                         />
                       </label>
                     </li>
                   </ul>
+                  <button type="submit">add</button>
                 </form>
                 <form class="modal__add-contact" action="/">
                   <ul class="modal__add-contact-list">
