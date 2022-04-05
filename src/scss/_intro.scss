@@ -103,6 +103,10 @@
   background-color: rgba(0, 0, 0, 0.8);
   transition: all 0.3s ease-in-out;
   visibility: hidden;
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
   &__content {
     position: relative;
     background-color: $colorWhite;
