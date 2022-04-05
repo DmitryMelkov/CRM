@@ -5,11 +5,11 @@ import { addContactsModal } from "./addContactsModal.js";
 import { addContacts } from "./addContacts.js";
 
 flsFunctions.isWeb();
-
+modalWindow();
 // selectCustom();
 addContactsModal();
 addContacts();
-modalWindow();
+
 
 
 

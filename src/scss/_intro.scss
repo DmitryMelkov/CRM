@@ -140,7 +140,9 @@
     line-height: 19px;
     color: $colorGrey;
   }
-
+  &__form-input._error {
+    border-bottom: 1px solid $colorRed;
+  }
   &__add-contact-item {
     display: flex;
   }

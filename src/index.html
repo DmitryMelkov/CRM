@@ -86,49 +86,43 @@
               <div class="modal__content modal-content-js">
                 <span class="modal__close modal__close-js">&times;</span>
                 <h3 class="modal__content-title title-reset">Новый клиент</h3>
-                <form class="modal__form" action="/">
+                <form class="modal__form modal__form-js" action="№" >
                   <ul class="modal__form-list">
                     <li class="modal__form-item">
-                      <label class="modal__form-label">
+                      <label class="modal__form-label" for="modal-surname">
                         <input
-                          class="modal__form-input"
+                          class="modal__form-input _req"
                           type="text"
                           id="modal-surname"
-                          name="Фамилия"
+                          name="family"
                           placeholder="Фамилия*"
-                          value="mel"
-                          data-validate-field="lastName"
                         />
                       </label>
                     </li>
                     <li class="modal__form-item">
-                      <label class="modal__form-label">
+                      <label class="modal__form-label" for="modal-name">
                         <input
-                          class="modal__form-input"
+                          class="modal__form-input _req"
                           type="text"
                           id="modal-name"
-                          name="Имя"
+                          name="name"
                           placeholder="Имя*"
-                          value="dm"
-                          data-validate-field="firstName"
                         />
                       </label>
                     </li>
                     <li class="modal__form-item">
-                      <label class="modal__form-label">
+                      <label class="modal__form-label" for="modal-middlename">
                         <input
-                          class="modal__form-input"
+                          class="modal__form-input _req"
                           type="text"
                           id="modal-middlename"
-                          name="Отчество"
+                          name="middleName"
                           placeholder="Отчество"
-                          value="al"
-                          data-validate-field="middleName"
                         />
                       </label>
                     </li>
                   </ul>
-                  <button type="submit">add</button>
+                  <button class="modal__save btn-reset" type="submit">Сохранить</button>
                 </form>
                 <form class="modal__add-contact" action="/">
                   <ul class="modal__add-contact-list">
@@ -170,7 +164,7 @@
                     Добавить контакт
                   </button>
                 </form>
-                <button class="modal__save btn-reset">Сохранить</button>
+
               </div>
             </div>
           </div>

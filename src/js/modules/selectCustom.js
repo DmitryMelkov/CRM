@@ -1,4 +1,5 @@
 export let selectCustom = () => {
+
   // Полифилл для метода forEach для NodeList
   if (window.NodeList && !NodeList.prototype.forEach) {
     NodeList.prototype.forEach = function (callback, thisArg) {
@@ -19,7 +20,8 @@ export let selectCustom = () => {
     const currentText = dropDownWrapper.querySelector(".select__current");
 
     // Клик по кнопке. Открыть/Закрыть select
-    selectHeader.addEventListener("click", function () {
+    selectHeader.addEventListener("click", function (e) {
+      e.preventDefault()
       selectList.classList.toggle("is-active");
     });
 

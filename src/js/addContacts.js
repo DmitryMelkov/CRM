@@ -1,4 +1,3 @@
-import JustValidate from "just-validate";
 import { createEl } from "./modules/createEl.js";
 
 export function addContacts() {
@@ -14,21 +13,21 @@ export function addContacts() {
   };
 
   let clientsArr = [
-    // {
-    //   id: 3,
-    //   fio: "Ivanov Vasily Petrovich",
-    //   firstName: "Vasily",
-    //   middleName: "Petrovich",
-    //   lastName: "Ivanov",
-    //   dateCreation: new Date().toLocaleString("ru", optionsDate),
-    //   timeCreation: new Date().toLocaleString("ru", optionsTime),
-    //   dateChange: new Date().toLocaleString("ru", optionsDate),
-    //   timeChange: new Date().toLocaleString("ru", optionsTime),
-    //   clientChange: "Изменить",
-    //   clientdel: "Удалить",
-    // },
     {
       idNumber: 1,
+      fio: "Ivanov Vasily Petrovich",
+      firstName: "Vasily",
+      middleName: "Petrovich",
+      lastName: "Ivanov",
+      dateCreation: new Date().toLocaleString("ru", optionsDate),
+      timeCreation: new Date().toLocaleString("ru", optionsTime),
+      dateChange: new Date().toLocaleString("ru", optionsDate),
+      timeChange: new Date().toLocaleString("ru", optionsTime),
+      clientChange: "Изменить",
+      clientdel: "Удалить",
+    },
+    {
+      idNumber: 2,
       fio: "Ivanov Dmitry Alexandrovich",
       firstName: "Dmitry",
       middleName: "Alexandrovich",
@@ -40,70 +39,90 @@ export function addContacts() {
       clientChange: "Изменить",
       clientdel: "Удалить",
     },
+    {
+      idNumber: 3,
+      fio: "Petrov Michail Dmitrievich",
+      firstName: "Michail",
+      middleName: "Dmitrievich",
+      lastName: "Petrov",
+      dateCreation: new Date().toLocaleString("ru", optionsDate),
+      timeCreation: new Date().toLocaleString("ru", optionsTime),
+      dateChange: new Date().toLocaleString("ru", optionsDate),
+      timeChange: new Date().toLocaleString("ru", optionsTime),
+      clientChange: "Изменить",
+      clientdel: "Удалить",
+    },
   ];
 
-  //validation
-  //валидация
+  const btnSave = document.querySelector(".modal__save");
+  btnSave.addEventListener("click", () => {
+    let firstName = document.querySelector("#modal-name");
+    let lastName = document.querySelector("#modal-surname");
+    let middleName = document.querySelector("#modal-middlename");
 
-  let firstName = document.getElementById("modal-name");
-  let lastName = document.querySelector("#modal-surname");
-  let middleName = document.querySelector("#modal-middlename");
-  console.log(firstName);
+    let firstNameValue = firstName.value;
+    let lastNameValue = lastName.value;
+    let middleNameValue = middleName.value;
 
-  new JustValidate(".modal__form", {
-    rules: {
-      firstName: {
-        required: true,
-        minLength: 3,
-        maxLength: 30,
-      },
-      lastName: {
-        required: true,
-        minLength: 3,
-        maxLength: 30,
-      },
-      middleName: {
-        required: true,
-        minLength: 3,
-        maxLength: 30,
-      },
-    },
-    messages: {
-      firstName: {
-        required: "Укажите имя",
-      },
-      lastName: {
-        required: "Укажите фамилию",
-      },
-      middleName: {
-        required: "Укажите отчество",
-      },
-    },
+    clientsArr.push({
+      firstName: firstNameValue,
+      lastName: lastNameValue,
+      middleName: middleNameValue,
+      fio: firstNameValue + " " + middleNameValue + " " + lastNameValue,
+      dateCreation: new Date().toLocaleString("ru", optionsDate),
+      timeCreation: new Date().toLocaleString("ru", optionsTime),
+      dateChange: new Date().toLocaleString("ru", optionsDate),
+      timeChange: new Date().toLocaleString("ru", optionsTime),
+    });
 
-    colorWrong: "red",
-
-    submitHandler: function () {
-      console.log("submitHandler");
-
-      let idNumber = 1;
-      let fioValue = firstName.value + middleName.value + lastName.value;
-
-      clientsArr.push({
-        idNumber: idNumber,
-        fio: fioValue,
-      });
-      render();
-    },
+    render();
   });
 
-  // создание tr
+  //validation
+  const form = document.querySelector(".modal__form-js");
+  const formSend = (e) => {
+    e.preventDefault();
+    console.log("form click");
+    let error = formValidate(form);
+
+    if (error === 0) {
+
+    } else {
+      alert("Заполните обязательные поля");
+    }
+  };
+
+  let formValidate = () => {
+    let error = 0;
+    let formReq = document.querySelectorAll("._req");
+    for (let index = 0; index < formReq.length; index++) {
+      const input = formReq[index];
+      formRemoveError(input);
+      if (input.value === "") {
+        formAddError(input);
+        error++;
+      }
+    }
+    return error;
+  };
+  const formAddError = (input) => {
+    input.parentElement.classList.add("_error");
+    input.classList.add("_error");
+  };
+  const formRemoveError = (input) => {
+    input.parentElement.classList.remove("_error");
+    input.classList.remove("_error");
+  };
+  form.addEventListener("submit", formSend);
+
+  // создание таблицы клиентов
   function createClientTr(client) {
     let elRowTr = createEl("tr", "clients__table-tr");
     tbody.append(elRowTr);
 
     //id
     let elRowTdId = createEl("td", "clients__table-td, clients__table-td-id");
-    elRowTdId.textContent = client.idNumber;
+    elRowTdId.textContent = clientsArr.indexOf(client) + 1;
     elRowTr.append(elRowTdId);
 
     //fio
@@ -184,7 +203,6 @@ export function addContacts() {
     });
 
     return elRowTr;
-    console.log("sort");
   }
 
   let tbody = document.querySelector(".clients__tbody");
@@ -232,21 +250,14 @@ export function addContacts() {
   //передача клиентов
   let render = () => {
     let copyclientsArr = [...clientsArr];
-    console.log(copyclientsArr);
     copyclientsArr = sortClients(copyclientsArr, columnSort, dirSort);
-
     tbody.innerHTML = "";
+
 
     for (let client of copyclientsArr) {
       let newTr = createClientTr(client);
-
       tbody.append(newTr);
-      console.log("rener");
     }
   };
-
-  // render();
-
-  const btnSave = document.querySelector(".modal__save");
-  btnSave.addEventListener("click", render);
+  render();
 }
