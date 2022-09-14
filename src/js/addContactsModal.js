@@ -1,10 +1,7 @@
 import { selectCustom } from "./modules/selectCustom.js";
 import { createEl } from "./modules/createEl.js";
 
-
 export function addContactsModal() {
-
-
   let svgSpriteChoice = () => {
     return `
     <span class="modal-select__current select__current">Телефон</span>
@@ -33,7 +30,8 @@ export function addContactsModal() {
   };
 
   let createElBtn = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
     const ul = document.querySelector(".modal__add-contact-list");
     const li = createEl("li", "modal__add-contact-item");
     ul.append(li);
@@ -49,8 +47,7 @@ export function addContactsModal() {
     const modalSelectBody = createEl("div", "modal-select__body");
     modalSelect.append(modalSelectBody);
     modalSelectBody.innerHTML = modalSelectItem();
-
-    selectCustom();
+    
 
     //modal-input
     const modalAddContactLabel = createEl("label", "modal__add-contact-label");
@@ -78,8 +75,6 @@ export function addContactsModal() {
 
   const addContact = document.querySelector(".modal__add-btn");
   addContact.addEventListener("click", createElBtn);
-
-
 }
 
 // selectItem.forEach((item) => {
