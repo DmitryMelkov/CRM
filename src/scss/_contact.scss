@@ -1,0 +1,130 @@
+@import "_variables";
+@import "_mixins";
+
+.contact {
+  display: flex;
+  align-items: center;
+  width: 390px;
+  margin-bottom: 25px;
+  &__type {
+    position: relative;
+  }
+  &__name {
+    height: 37px;
+    z-index: 1;
+    max-width: 134px;
+    min-width: 134px;
+    position: relative;
+    padding: 10px 12px;
+    padding-right: 60px;
+    cursor: pointer;
+    color: $colorBlack;
+    border: 1px solid $colorGrey;
+    background-color: $colorGreyLight;
+    transition: background-color 0.3s ease-in-out;
+  }
+  &__name::before {
+    content: "";
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    width: 10px;
+    height: 10px;
+    background-image: url("../img/contact-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  &__list--active.contact__name::before {
+    transform: rotate(-180deg);
+    transition: transform 0.3s ease-in-out;
+  }
+  &__list {
+    z-index: 2;
+    position: absolute;
+    font-size: 12px;
+    padding: 10px 0 6px;
+    width: 100%;
+    max-width: 134px;
+    min-width: 134px;
+    top: 36px;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    background-color: $colorGreySelect;
+    border: 1px solid $colorGrey;
+  }
+  &__list.contact__list--active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+  &__item {
+    cursor: pointer;
+    padding-top: 4px;
+    border-bottom: 7px;
+    padding-left: 12px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  &__input {
+    padding-left: 12px;
+    width: 100%;
+    height: 37px;
+    display: block;
+    border: 1px solid $colorGrey;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+  }
+  &__delete {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    align-self: stretch;
+    background-color: $colorGreyLight;
+    border: 1px solid $colorGrey;
+    transition: border-color .3s ease-in-out;
+    color: $colorWhite;
+    cursor: pointer;
+  }
+  &__delete svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: $colorGrey;
+    transition: fill .3s ease-in-out;
+  }
+  &__delete &-tooltip {
+    min-width: 150px;
+    top: -30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact__name:hover {
+    background-color: $colorGrey;
+  }
+  .contact__item:hover {
+    transition: background-color 0.3s ease-in-out;
+    background-color: $colorGreyLight;
+  }
+  .contact__delete:hover {
+    border-color: $colorRed;
+  }
+  .contact__delete:hover svg {
+    fill: $colorRed;
+  }
+  .contact__delete:hover .contact-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+}
+
+//active
+.contact__name:active {
+  background-color: $colorGreyLight;
+}

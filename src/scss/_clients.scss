@@ -1,0 +1,169 @@
+@import "_variables";
+@import "_mixins";
+
+.clients {
+  padding-top: 130px;
+  &__heading {
+    margin: 0;
+    margin-bottom: 30px;
+    @include text(24px, 32px, 700, $colorBlack);
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__btn {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 12px 26px;
+    align-self: center;
+    @include text(14px, 19px, 600, $colorFirm);
+    border: 1px solid $colorFirm;
+    @include transition((background-color, color), 0.3s, ease-in-out);
+  }
+  &__btn svg {
+    display: block;
+    margin-right: 10px;
+    fill: $colorFirm;
+    @include transition(fill, 0.3s, ease-in-out);
+  }
+  &__tbody {
+    position: relative;
+  }
+}
+
+.display-info {
+  padding-left: 20px;
+  margin-bottom: 10px;
+  display: block;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+  &__item {
+    @include text(12px, 16px, 400, $colorGrey);
+  }
+  &__item--id,
+  &__sorting {
+    text-transform: uppercase;
+    color: $colorFirm;
+  }
+  &__item--id,
+  &__item--name,
+  &__item--create,
+  &__change {
+    cursor: pointer;
+    user-select: none;
+  }
+  &__item--id {
+    padding-right: 13px;
+    margin-right: 60px;
+    background-position: right center;
+  }
+  &__item--name {
+    padding-left: 48px;
+    background-position: right 18px center;
+  }
+  &__sorting {
+    padding-left: 11px;
+    font-size: 10px;
+  }
+  &__item--create {
+    position: relative;
+    padding-right: 70px;
+    padding-left: 200px;
+  }
+  &__item--create::before {
+    content: "создания";
+    position: absolute;
+    top: 1px;
+    right: 0;
+    margin-right: 13px;
+  }
+  &__item--change {
+    position: relative;
+    padding-right: 80px;
+    margin-right: 28px;
+    padding-left: 30px;
+  }
+  &__item--change::before {
+    content: "изменения";
+    position: absolute;
+    top: 1px;
+    right: 0;
+    margin-right: 13px;
+  }
+  &__item--contacts {
+    padding-left: 30px;
+  }
+  &__item--actions {
+    padding-left: 100px;
+  }
+}
+
+.create__span,
+.change__span {
+  display: inline-block;
+  width: 7px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: url("../img/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.sort-up,
+.sort-down {
+  background-repeat: no-repeat;
+}
+
+.sort-up {
+  background-image: url("../img/arrow-up.svg");
+}
+
+.sort-down {
+  background-image: url("../img/arrow-down.svg");
+}
+
+.display-info__item--change,
+.display-info__item--create {
+  background-image: none;
+}
+
+.contacts {
+  &__link {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-bottom: 7px;
+    // opacity: 0.7;
+  }
+  &__link g,
+  &__link path {
+    transition: opacity 0.3s ease-in-out;
+  }
+  &__link:not(:last-child) {
+    margin-right: 7px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .clients {
+    &__btn:hover {
+      background-color: $colorFirm;
+      color: $colorWhite;
+    }
+    &__btn:hover svg {
+      fill: $colorWhite;
+    }
+  }
+  .contacts {
+    &__link:hover g,
+    &__link:hover path {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+  }
+}

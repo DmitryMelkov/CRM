@@ -7,9 +7,9 @@
 }
 
 html {
-  font-family: "Open sans", sans-serif;
   font-size: 14px;
   font-weight: 400;
+  font-family: "OpenSans", sans-serif;
 }
 
 a {
@@ -23,7 +23,8 @@ button {
   margin: 0;
   outline: none;
   box-shadow: none;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 ul {
@@ -37,29 +38,28 @@ img {
 }
 
 body {
+  min-width: 320px;
   margin: 0;
   padding: 0;
   outline: none;
-  background-color: $colorGreyText;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 label {
   display: block;
-  width: 100%;
+  cursor: pointer;
 }
 
-h2 {
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 700;
-  color: $colorBlack;
-}
-
-h3 {
-  font-size: 18px;
-  line-height: 24.5px;
-  font-weight: 700;
-  color: $colorBlack;
+input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 40px;
+  color: $colorGrey;
 }
 
 .title-reset {
@@ -84,7 +84,6 @@ h3 {
   border-style: none;
   border-color: initial;
   border-image: initial;
-
 }
 
 .visually-hidden {
@@ -99,15 +98,37 @@ h3 {
 }
 
 .container {
-  max-width: 1366px;
+  max-width: 1186px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
-  background-color: $colorBackground;
+}
+.section {
+  padding-top: 70px;
 }
 
-table {
-  border-collapse: collapse;
+.site-tooltip {
+  position: absolute;
+  top: -41px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  padding: 7px 15px;
+  color: $colorWhite;
+  background-color: $colorBlack;
+}
+
+.site-tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%);
+  clip-path: polygon(100% 0, 0 0, 51% 100%);
+  background-color: $colorBlack;
 }
 
 //убрать крестик у инпута
@@ -128,9 +149,19 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
-@media (max-width: 650px) {
-  .container {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+//убрать стрелки от номера у инпута
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+//hover
+@media (min-width: 1024px) {
+}
+
+//active, focus

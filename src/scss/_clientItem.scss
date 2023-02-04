@@ -1,0 +1,91 @@
+@import "_variables";
+@import "_mixins";
+
+.clients {
+  &__table {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  &__item {
+    display: flex;
+    padding: 18px;
+    border-bottom: 1px solid $colorGrey;
+    background-color: $colorWhite;
+  }
+  &__id {
+    width: 7%;
+    display: flex;
+    align-items: center;
+    @include text(12px, 16px, 400, $colorGrey);
+  }
+  &__full-name {
+    width: calc(32% + 5px);
+    @include text(14px, 19px, 400, $colorBlack);
+  }
+  &__full-name span {
+    display: inline-block;
+  }
+  &__full-name span:not(:last-child) {
+    margin-right: 5px;
+  }
+  &__created {
+    width: calc(15% - 1px);
+  }
+  &__changed {
+    width: calc(15% + 6px);
+    padding-left: 5px;
+  }
+  &__contacts {
+    // margin: -10px 30px -17px 0;
+    max-width: 120px;
+    min-width: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+  &__actions button {
+    display: inline-block;
+    font-size: 14px;
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-color: transparent;
+    padding-left: 20px;
+    color: $colorBlack;
+  }
+  &__edit {
+    margin-right: 32px;
+    background-image: url("../img/edit.svg");
+    transition: color 0.3s ease-in-out;
+  }
+  &__delete {
+    margin-right: 32px;
+    background-image: url("../img/cancel.svg");
+    transition: color 0.3s ease-in-out;
+  }
+}
+
+.created__date,
+.changed__date {
+  margin-right: 7px;
+  @include text(14px, 19px, 400, $colorBlack);
+}
+
+.created__time,
+.changed__time {
+  @include text(14px, 19px, 400, $colorGrey);
+}
+
+@media (min-width: 1024px) {
+  .clients {
+    &__edit:hover {
+      color: $colorFirm;
+    }
+    &__delete:hover {
+      color: $colorRed;
+    }
+  }
+}

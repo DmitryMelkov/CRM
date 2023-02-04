@@ -1,6 +1,22 @@
 @import "_variables";
 
 
-@mixin menu {
-
+@mixin transition($property, $duration, $timing-function) {
+  transition-property: $property;
+  transition-duration: $duration;
+  transition-timing-function: $timing-function;
 }
+
+@mixin text($font-size, $line-height, $font-weight, $color) {
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+  color: $color;
+}
+
+@mixin svg-icon($width, $height, $color) {
+  width: $width;
+  height: $height;
+  color: $color;
+}
+
